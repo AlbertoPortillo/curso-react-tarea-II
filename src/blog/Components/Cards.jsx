@@ -1,25 +1,25 @@
 import React from 'react'
-import { Box, Card, CardHeader, CardBody, Heading, Stack, StackDivider, Text } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, Heading, Text, CardFooter } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 
-export default function Cards({ id, body, title }) {
+export default function Cards({ id, body, title, fecha }) {
   return (
-    <Card>
-        <CardHeader>
-            <Heading size='md'>Blog #{id + 1}</Heading>
-        </CardHeader>
-
-        <CardBody>
-            <Stack divider={<StackDivider />} spacing='4'>
-            <Box>
-                <Heading size='xs' textTransform='uppercase'>
-                    {title}
-                </Heading>
-                <Text pt='2' fontSize='sm'>
+    <Link to={`/posts/${id}`}>
+        <Card border={'solid'} h={"30vh"} >
+            <CardHeader overflow={'auto'} h={'20%'}>
+                <Heading  size='md'>{title}</Heading>
+            </CardHeader>
+            <CardBody h={'80%'} overflow={'scroll'}>
+                <Text fontSize='sm'>
                     {body}
                 </Text>
-            </Box>
-            </Stack>
-        </CardBody>
-    </Card>
+            </CardBody>
+            <CardFooter overflow={'hidden'} h={'2%'}>
+                <Text fontSize={'x-small'}>
+                    {fecha}
+                </Text>
+            </CardFooter>
+        </Card>
+    </Link>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,9 +13,10 @@ import EditBlog from './blog/Edit';
 const router = createBrowserRouter([
   {
     element: <Home />,
+    path:"/",
     children:[
       {
-        path:"/",
+        index: true, 
         element: <HomeBlog />
       },
       {
@@ -25,7 +26,6 @@ const router = createBrowserRouter([
       {
         path: "/posts/:id",
         element: <EditBlog />
-
       }
     ]
   },
